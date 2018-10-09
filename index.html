@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <script type="text/babel">
+            class App extends React.Component{
+               state = {
+                   name : "MyNewReact",
+                   version: "V 0.2"
+               }
+               handleClick = (e) => {
+                   //console.log(e.target)
+                  console.log(this.state)
+
+                //Update State Items
+                  this.setState({
+                      name : "ReactNew",
+                      version: "V 2.0"
+                  }) 
+               }
+               //Event Function
+               handleMouseOver = (e) =>{
+                   console.log(e.target,e.pageX)
+               }
+               handleCopy = (e) =>{
+                   console.log("try being original for once");
+               }
+               handleChange = (e) =>{
+                   this.setState({
+                       name : e.target.value
+                   })
+               }
+               handleSubmit = (e) =>{
+                   e.preventDefault();
+                   console.log("Form Submitted ",this.state.name)
+               }
+                render() {
+                        return (
+                            <div className="app-abc"> 
+                            <h1> Hello world ! </h1>
+                            <p>{ Math.random() * 10 }</p>
+                            <p>My Name is : {this.state.name} and my version is {this.state.version}</p>
+                            <button onClick={this.handleClick}>Click me !</button>
+                            <button onMouseOver={this.handleMouseOver}>Hover Over</button>
+                            <p onCopy={this.handleCopy}>What we think we become</p>
+                            <form onSubmit={this.handleSubmit}>
+                            <input type ="text" onChange={this.handleChange}/>
+                            <button>Submit</button>
+                            </form>
+
+                            </div>
+
+
+                        )
+
+                }
+
+
+            }
+            ReactDOM.render(<App/>,document.getElementById("app"))
+
+        </script>
+
+    </div>
+    
+</body>
+</html>
